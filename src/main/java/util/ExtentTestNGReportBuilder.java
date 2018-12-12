@@ -1,11 +1,11 @@
-package com.aidong.util.extent.client;
+package util;
 
 import com.alibaba.fastjson.JSONObject;
 import macaca.client.MacacaClient;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import util.ExtentTestNGITestListener;
 
 /**
  * Created by sammy on 16-12-20.

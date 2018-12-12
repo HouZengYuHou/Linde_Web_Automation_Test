@@ -1,5 +1,4 @@
-package com.aidong.util.extent.client;
-
+package util;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -14,7 +13,6 @@ import java.io.File;
  * Created by sammy on 16-12-20.
  */
 public class ExtentTestNGITestListener implements ITestListener {
-
     private static ExtentReports extent = ExtentManager.getInstance("extent.html");
     private static ThreadLocal test = new ThreadLocal();
     public static MacacaClient driver;
@@ -33,10 +31,6 @@ public class ExtentTestNGITestListener implements ITestListener {
         test.set(extent.createTest(result.getMethod().getMethodName()));
     }
 
-    @Override
-    public synchronized void onTestSuccess(ITestResult result) {
-        ((ExtentTest)test.get()).pass("Test passed");
-    }
 
     @Override
     public synchronized void onTestFailure(ITestResult result) {
@@ -56,6 +50,12 @@ public class ExtentTestNGITestListener implements ITestListener {
         }
     }
 
+
+    @Override
+    public synchronized void onTestSuccess(ITestResult result) {
+       // ((ExtentTest) test.get()).pass("通过");
+    }
+
     @Override
     public synchronized void onTestSkipped(ITestResult result) {
         ((ExtentTest)test.get()).skip(result.getThrowable());
@@ -64,5 +64,8 @@ public class ExtentTestNGITestListener implements ITestListener {
     @Override
     public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 
+    }
+    public static void ExtenTestlog(String errorLog){
+        ((ExtentTest) test.get()).pass(errorLog);
     }
 }

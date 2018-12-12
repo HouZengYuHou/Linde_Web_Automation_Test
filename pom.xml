@@ -37,13 +37,13 @@
         <version>3.141.5</version>
         <scope>compile</scope> </dependency>
 
-    <!--testng 依赖-->
+<!--    &lt;!&ndash;testng 依赖&ndash;&gt;
     <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>6.11</version>
         <scope>test</scope>
-    </dependency>
+    </dependency>-->
     <!--reportng 依赖-->
     <dependency>
         <groupId>org.uncommons</groupId>
@@ -121,13 +121,18 @@
             <version>3.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+        </dependency>
     </dependencies>
 
-    <!-- maven 参数配置，这里引用不同的testng.xml -->
+   <!-- &lt;!&ndash; maven 参数配置，这里引用不同的testng.xml &ndash;&gt;
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <xmlFileName>testng.xml</xmlFileName>
     </properties>
-
+-->
 
 </project>

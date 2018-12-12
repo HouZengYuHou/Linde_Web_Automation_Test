@@ -1,4 +1,4 @@
-package com.aidong.util.extent.client;
+package util;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
