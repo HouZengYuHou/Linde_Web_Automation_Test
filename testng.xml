@@ -24,6 +24,7 @@
     <test name="Test">
         <classes>
             <class name="_case.Linde_Test"></class>
+            <!--<class name="_case.CardFile_Test"></class>-->
         </classes>
     </test>
 </suite>

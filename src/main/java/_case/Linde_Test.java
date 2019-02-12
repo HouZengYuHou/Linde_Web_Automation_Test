@@ -2,11 +2,8 @@ package _case;
 
 import _driver.CustomDriver;
 import _public.LoginUser;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import util.ExtentManager;
 import util.ExtentTestNGITestListener;
 
 import java.util.concurrent.TimeUnit;
@@ -35,7 +32,7 @@ public class Linde_Test {
     }
     @Test(dataProvider = "user")
     public void testCase_1(String userName,String passWord) throws Exception {
-        drivers.get(baseUrl);
+        drivers.navigate().to(baseUrl);
         Thread.sleep(1000);
         if(userName.equals("chrome")&&passWord.equals("")){
             ExtentTestNGITestListener.ExtenTestlog("请输入密码");
@@ -52,8 +49,7 @@ public class Linde_Test {
         Thread.sleep(3000);
     }
     @AfterClass
-    public synchronized void lindeQuit() {
-        //driver.quit();
-        CustomDriver.getDriver();
+    public void testLogOurInfo()throws Exception{
+        LoginUser.logOutInfo(drivers);
     }
 }
