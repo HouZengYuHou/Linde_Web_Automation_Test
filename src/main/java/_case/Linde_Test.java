@@ -51,5 +51,6 @@ public class Linde_Test {
     @AfterClass
     public void testLogOurInfo()throws Exception{
         LoginUser.logOutInfo(drivers);
+        Thread.sleep(2000);
     }
 }

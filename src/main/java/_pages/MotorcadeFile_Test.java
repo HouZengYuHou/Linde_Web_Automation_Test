@@ -38,13 +38,7 @@ public class MotorcadeFile_Test {
     }
     //车辆类型
     public static WebElement getCardType(WebDriver driver){
-       // motorcadeTest=driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/form/div[2]/div/div/div[2]/input"));
-        Select dropList = new Select(driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div[2]/form/div[2]/div/div/div[2]/input")));
-        dropList.selectByVisibleText("平衡重电车");
-
-       /* Actions actions=new Actions(driver);
-        actions.moveToElement(driver.findElement(By.xpath("/html/body/div[3]/div[1]/div[1]/ul/li[1]/span"))).perform();
-        actions.click(By.xpath("\"/html/body/div[3]/div[1]/div[1]/ul/li[1]/span\"").perform();*/
+        motorcadeTest=driver.findElement(By.xpath("//*[contains(text(),'平衡重叉车')]"));
         return motorcadeTest;
     }
     /*//平衡重点车

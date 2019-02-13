@@ -43,7 +43,6 @@ public class ExtentTestNGITestListener implements ITestListener {
                 file.mkdirs();
             }
             String fileName = result.getMethod().getMethodName() + ".png";
-            driver.saveScreenshot(screenPath + fileName);
             ((ExtentTest)test.get()).addScreenCaptureFromPath(screenPath + fileName);
         } catch (Exception e) {
             e.printStackTrace();

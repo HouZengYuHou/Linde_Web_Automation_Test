@@ -2,6 +2,7 @@ package _case;
 
 import _driver.CustomDriver;
 import _public.CardFilePublic;
+import _public.LoginUser;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,6 +18,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class CardFile_Test {
     private WebDriver drivers;
+    @BeforeClass
+    public synchronized void setUp() {
+        drivers = CustomDriver.getDriver();
+        LoginUser.login(drivers, "chrome","123456");
+    }
     @DataProvider(name = "cardName")
     public Object[][] cName(){
     return new Object[][]{
@@ -29,7 +35,7 @@ public class CardFile_Test {
     }
     @Test(dataProvider = "cardName")
     public void getCardTest(String cardName) throws Exception{
-        drivers = CustomDriver.getDriver();
+        Thread.sleep(3000);
         CardFilePublic.getCardFile(drivers,cardName);
     }
 
