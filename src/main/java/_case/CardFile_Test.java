@@ -8,6 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import util.TableUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,12 +34,26 @@ public class CardFile_Test {
             {"皇家三号~mqy"}
             };
     }
-    @Test(dataProvider = "cardName")
+    //查询车辆
+    @Test( priority = 0,dataProvider = "cardName")
     public void getCardTest(String cardName) throws Exception{
         Thread.sleep(3000);
         CardFilePublic.getCardFile(drivers,cardName);
     }
+    //新增车辆
+    @Test(priority = 1)
+    public void getAddCard() throws Exception {
+        Thread.sleep(2000);
+        CardFilePublic.getAddCardFile(drivers,"123");
+    }
+    //修改车辆
+    public void getUpdateCard(){
 
+    }
+    //删除车辆
+    public void getDeleteCard(){
+
+    }
     @AfterClass
     public void getQuit() {
       //  drivers.quit();

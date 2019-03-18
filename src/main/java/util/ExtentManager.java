@@ -22,7 +22,7 @@ public class ExtentManager {
     public static void createInstance(String filePath) {
         extent = new ExtentReports();
         extent.setSystemInfo("os", "Linux");
-        extent.attachReporter(createHtmlReporter(filePath), createExtentXReporter());
+        extent.attachReporter(createHtmlReporter(filePath));
     }
 
     public static ExtentHtmlReporter createHtmlReporter(String filePath){
@@ -38,12 +38,12 @@ public class ExtentManager {
         return htmlReporter;
     }
 
-    public static ExtentXReporter createExtentXReporter() {
+   /* public static ExtentXReporter createExtentXReporter() {
         ExtentXReporter extentx = new ExtentXReporter("127.0.0.1",27017);
         extentx.config().setProjectName("test1");
         extentx.config().setReportName("Build-1224");
         extentx.config().setServerUrl("http://localhost:1337");
         return extentx;
-    }
+    }*/
 
 }

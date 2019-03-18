@@ -1,4 +1,4 @@
-package _pages;
+package _pages._login;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

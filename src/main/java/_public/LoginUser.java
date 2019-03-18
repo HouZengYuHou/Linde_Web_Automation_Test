@@ -1,9 +1,7 @@
 package _public;
 
-import _pages.Linde_Login;
-import org.openqa.selenium.Alert;
+import _pages._login.Linde_Login;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginUser {
     //登录方法
