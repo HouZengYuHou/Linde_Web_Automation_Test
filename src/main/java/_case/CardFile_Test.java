@@ -2,11 +2,14 @@ package _case;
 
 import _driver.CustomDriver;
 import _public.CardFilePublic;
+import _public.LoginUser;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ Author     ：HouZengYu.
@@ -17,13 +20,19 @@ public class CardFile_Test {
     private WebDriver drivers;
     private Logger logger;
     private Random ra;
+    private String baseUrl;
 
     @BeforeClass
     public synchronized void setUp() {
-        ra = new Random();
         drivers = CustomDriver.getDriver();
+        baseUrl = "https://test.smartlink.aidong-ai.com";
+        drivers.navigate().to(baseUrl);
+        drivers.manage().window().maximize();
+        drivers.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        System.out.println(drivers.getTitle());
+        ra = new Random();
         logger = LogManager.getLogger(CardFile_Test.class.getName());
-        //  LoginUser.login(drivers, "chrome", "123456");
+        LoginUser.login(drivers, "chrome", "123456");
     }
 
     @DataProvider(name = "cardName")
