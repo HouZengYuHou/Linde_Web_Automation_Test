@@ -47,7 +47,7 @@ public class Linde_Login {
         //driver.switchTo().alert().accept();
         return userLogin;
     }
-    //提示框点击确定退出/html/body/div[2]/div/div[3]/button[2]
+    //提示框点击确定退出
     public static WebElement logOutHint(WebDriver driver)throws  Exception{
        userLogin= driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/button[2]"));
         return userLogin;
