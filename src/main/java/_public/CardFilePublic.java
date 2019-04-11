@@ -12,21 +12,31 @@ import java.util.concurrent.TimeUnit;
  * @ Class      ：
  */
 public class CardFilePublic {
-    //查询车辆
-    public static void getCardFile(WebDriver driver, String cardName) {
+
+    //进入车队档案
+    public static void getCardFileMananer(WebDriver driver){
         try {
             MotorcadeFile_Test.getCardInfo(driver).click();
             Thread.sleep(10000);
-            MotorcadeFile_Test.getCardData(driver).sendKeys(cardName);
-            Thread.sleep(2000);
-            MotorcadeFile_Test.getCardDtaQuery(driver).click();
-            Thread.sleep(2000);
-            MotorcadeFile_Test.getRefresh(driver).click();
+            System.out.println("进入车队档案");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+    //查询车辆
+    public static void getCardFile(WebDriver driver, String cardName) {
+        try {
 
+            MotorcadeFile_Test.getCardData(driver).sendKeys(cardName);
+            Thread.sleep(3000);
+            MotorcadeFile_Test.getCardDtaQuery(driver).click();
+            Thread.sleep(3000);
+            MotorcadeFile_Test.getRefresh(driver).click();
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     //新增车辆
     public static void getAddCardFile(WebDriver driver, String cardName, String bodyName) {
         try {

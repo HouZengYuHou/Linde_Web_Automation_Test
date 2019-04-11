@@ -6,8 +6,14 @@ import _public.LoginUser;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,11 +27,18 @@ public class CardFile_Test {
     private Logger logger;
     private Random ra;
     private String baseUrl;
-
+    private static Properties properties;
     @BeforeClass
-    public synchronized void setUp() {
+    public synchronized void setUp() throws IOException {
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("env.properties");
+        properties = new Properties();
+        properties.load(stream);
+        String host = properties.getProperty("douban.host");
+        System.out.println(host);
+        stream.close();
         drivers = CustomDriver.getDriver();
-        baseUrl = "https://test.smartlink.aidong-ai.com";
+      //  baseUrl ="https://test.smartlink.aidong-ai.com";
+        baseUrl=host;
         drivers.navigate().to(baseUrl);
         drivers.manage().window().maximize();
         drivers.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -33,6 +46,7 @@ public class CardFile_Test {
         ra = new Random();
         logger = LogManager.getLogger(CardFile_Test.class.getName());
         LoginUser.login(drivers, "chrome", "123456");
+        CardFilePublic.getCardFileMananer(drivers);
     }
 
     @DataProvider(name = "cardName")
@@ -41,7 +55,7 @@ public class CardFile_Test {
                 {"刘峰测试03-不要动"},
                 {"皇家一号mqy"},
                 {"皇家三号~mqy"},
-                {"超出限制超出限制超出限制超出限制超出限制超出限制"},
+                {"侯增宇"},
                 {""}
         };
     }
@@ -49,34 +63,28 @@ public class CardFile_Test {
     //查询车辆
     @Test(priority = 0, dataProvider = "cardName")
     public void getCardTest(String cardName) {
-        switch (cardName) {
-            case "":
-                CardFilePublic.getCardFile(drivers, cardName);
-                logger.info("查询为空");
-            case "超出限制超出限制超出限制超出限制超出限制超出限制":
-                CardFilePublic.getCardFile(drivers, cardName);
-                logger.info("暂无数据");
-            case "皇家三号~mqy":
-                CardFilePublic.getCardFile(drivers, cardName);
-                logger.info("正常搜索");
-            case "皇家一号mqy":
-                CardFilePublic.getCardFile(drivers, cardName);
-                logger.info("正常搜索");
-            case "刘峰测试03-不要动":
-                CardFilePublic.getCardFile(drivers, cardName);
-                logger.info("正常搜索");
-                break;
+        if ("刘峰测试03-不要动".equals(cardName)) {
+            CardFilePublic.getCardFile(drivers, cardName);
+        } else if ("皇家一号mqy".equals(cardName)) {
+            CardFilePublic.getCardFile(drivers, cardName);
+        } else if ("皇家三号~mqy".equals(cardName)) {
+            CardFilePublic.getCardFile(drivers, cardName);
+        } else if ("侯增宇".equals(cardName)) {
+            CardFilePublic.getCardFile(drivers, cardName);
+        } else if ("".equals(cardName)) {
+            CardFilePublic.getCardFile(drivers, cardName);
+        } else {
+            CardFilePublic.getCardFile(drivers, cardName);
         }
-
     }
 
-    //新增车辆
+  /*  //新增车辆
     @Test(priority = 1)
     public void getAddCard() throws Exception {
         Thread.sleep(2000);
         CardFilePublic.getAddCardFile(drivers, "自动化" + ra.nextInt(100) + 1, "chetihao" + ra.nextInt(100) + 1);
         logger.info("提交成功");
-    }
+    }*/
 
     //修改车辆
     public void getUpdateCard() {
